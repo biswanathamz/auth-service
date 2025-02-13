@@ -1,0 +1,24 @@
+# Gradle
+.gradle/
+build/
+
+# Temporary files
+*.bin
+*.lock
+*.probe
+
+# IntelliJ IDEA
+.idea/
+*.iml
+
+# VS Code
+.vscode/
+
+# Logs
+*.log
+
+# Compiled Java files
+*.class
+
+# Cache and temporary folders
+build/tmp/
