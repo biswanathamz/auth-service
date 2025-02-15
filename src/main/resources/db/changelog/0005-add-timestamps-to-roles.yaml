@@ -1,0 +1,20 @@
+databaseChangeLog:
+  - changeSet:
+      id: 0005-add-timestamps-to-roles
+      author: Biswanath_Saha
+      changes:
+        - addColumn:
+            tableName: roles
+            columns:
+              - column:
+                  name: created_at
+                  type: TIMESTAMP
+                  defaultValueComputed: CURRENT_TIMESTAMP
+                  constraints:
+                    nullable: false
+              - column:
+                  name: updated_at
+                  type: TIMESTAMP
+                  defaultValueComputed: CURRENT_TIMESTAMP
+                  constraints:
+                    nullable: false

@@ -1,0 +1,20 @@
+databaseChangeLog:
+  - changeSet:
+      id: 0006-add-timestamps-to-services
+      author: Biswanath_Saha
+      changes:
+        - addColumn:
+            tableName: services
+            columns:
+              - column:
+                  name: created_at
+                  type: TIMESTAMP
+                  constraints:
+                    nullable: false
+                  defaultValueComputed: CURRENT_TIMESTAMP
+              - column:
+                  name: updated_at
+                  type: TIMESTAMP
+                  constraints:
+                    nullable: false
+                  defaultValueComputed: CURRENT_TIMESTAMP

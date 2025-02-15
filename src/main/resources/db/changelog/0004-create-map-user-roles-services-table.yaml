@@ -1,0 +1,39 @@
+databaseChangeLog:
+  - changeSet:
+      id: 0004-create-user-roles-services-table
+      author: your_name
+      changes:
+        - createTable:
+            tableName: user_roles_services
+            columns:
+              - column:
+                    name: id
+                    type: INT
+                    autoIncrement: true
+                    constraints:
+                      primaryKey: true
+                      nullable: false
+              - column:
+                  name: user_id
+                  type: UUID
+                  constraints:
+                    nullable: false
+                    foreignKeyName: fk_user_roles_services_user
+                    references: users(id)
+                    deleteCascade: true
+              - column:
+                  name: role_id
+                  type: INT
+                  constraints:
+                    nullable: false
+                    foreignKeyName: fk_user_roles_services_role
+                    references: roles(id)
+                    deleteCascade: true
+              - column:
+                  name: service_id
+                  type: INT
+                  constraints:
+                    nullable: false
+                    foreignKeyName: fk_user_roles_services_service
+                    references: services(id)
+                    deleteCascade: true
