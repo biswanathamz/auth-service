@@ -1,10 +1,10 @@
 databaseChangeLog:
   - changeSet:
-      id: 1-create-users-table
+      id: 0002-create-user-meta-data-table
       author: Biswanath_Saha
       changes:
         - createTable:
-            tableName: users
+            tableName: user_meta_data
             columns:
               - column:
                   name: id
@@ -14,27 +14,22 @@ databaseChangeLog:
                     nullable: false
                     unique: true
               - column:
-                  name: first_name
-                  type: VARCHAR(100)
+                  name: user_id
+                  type: UUID
                   constraints:
                     nullable: false
-              - column:
-                  name: last_name
-                  type: VARCHAR(100)
-                  constraints:
-                    nullable: false
-              - column:
-                  name: email
-                  type: VARCHAR(255)
-                  constraints:
                     unique: true
-                    nullable: false
+                    foreignKeyName: fk_user_meta_data_user
+                    references: users(id)
+                    deleteCascade: true
               - column:
-                  name: phone
-                  type: VARCHAR(20)
+                  name: service_id
+                  type: INT
                   constraints:
-                    unique: true
-                    nullable: true
+                    nullable: false
+                    foreignKeyName: fk_user_meta_data_service
+                    references: services(id)
+                    deleteCascade: true
               - column:
                   name: password
                   type: VARCHAR(255)

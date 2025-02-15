@@ -1,10 +1,10 @@
 databaseChangeLog:
   - changeSet:
-      id: 0003-create-services-table
+      id: 0004-create-roles-table
       author: Biswanath_Saha
       changes:
         - createTable:
-            tableName: services
+            tableName: roles
             columns:
               - column:
                   name: id
@@ -18,4 +18,16 @@ databaseChangeLog:
                   type: VARCHAR(50)
                   constraints:
                     unique: true
+                    nullable: false
+              - column:
+                  name: created_at
+                  type: TIMESTAMP
+                  defaultValueComputed: CURRENT_TIMESTAMP
+                  constraints:
+                    nullable: false
+              - column:
+                  name: updated_at
+                  type: TIMESTAMP
+                  defaultValueComputed: CURRENT_TIMESTAMP
+                  constraints:
                     nullable: false

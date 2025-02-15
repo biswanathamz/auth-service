@@ -1,13 +1,11 @@
 databaseChangeLog:
   - include:
-      file: classpath:db/changelog/001-create-users.yaml
+      file: classpath:db/changelog/0003-create-roles-table.yaml
   - include:
-      file: classpath:db/changelog/0002-create-roles-table.yaml
+      file: classpath:db/changelog/0004-create-services-table.yaml
   - include:
-      file: classpath:db/changelog/0003-create-services-table.yaml
+      file: classpath:db/changelog/0001-create-users.yaml
   - include:
-      file: classpath:db/changelog/0004-create-map-user-roles-services-table.yaml
+      file: classpath:db/changelog/0002-create-user-meta-data-table.yaml
   - include:
-      file: classpath:db/changelog/0005-add-timestamps-to-roles.yaml
-  - include:
-      file: classpath:db/changelog/0006-add-timestamps-to-services.yaml
+      file: classpath:db/changelog/0005-create-map-user-roles-services-table.yaml
