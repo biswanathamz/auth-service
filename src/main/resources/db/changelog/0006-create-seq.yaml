@@ -1,0 +1,25 @@
+databaseChangeLog:
+  - changeSet:
+      id: 0006-create-users-seq
+      author: your_name
+      changes:
+        - createSequence:
+            sequenceName: users_seq
+            startValue: 1
+            incrementBy: 1
+        - createSequence:
+            sequenceName: user_meta_data_seq
+            startValue: 1
+            incrementBy: 1
+        - createSequence:
+            sequenceName: roles_seq
+            startValue: 1
+            incrementBy: 1
+        - createSequence:
+            sequenceName: services_seq
+            startValue: 1
+            incrementBy: 1
+        - createSequence:
+            sequenceName: user_roles_services_seq
+            startValue: 1
+            incrementBy: 1

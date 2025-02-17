@@ -9,3 +9,5 @@ databaseChangeLog:
       file: classpath:db/changelog/0002-create-user-meta-data-table.yaml
   - include:
       file: classpath:db/changelog/0005-create-map-user-roles-services-table.yaml
+  - include:
+      file: classpath:db/changelog/0006-create-seq.yaml

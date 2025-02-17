@@ -1,6 +1,6 @@
 databaseChangeLog:
   - changeSet:
-      id: 1-create-users-table
+      id: 0001-create-users-table
       author: Biswanath_Saha
       changes:
         - createTable:
@@ -8,11 +8,12 @@ databaseChangeLog:
             columns:
               - column:
                   name: id
-                  type: UUID
+                  type: BIGINT
                   constraints:
                     primaryKey: true
                     nullable: false
                     unique: true
+                  autoIncrement: true
               - column:
                   name: first_name
                   type: VARCHAR(100)

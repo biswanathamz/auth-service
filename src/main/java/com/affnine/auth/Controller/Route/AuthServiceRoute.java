@@ -1,6 +1,7 @@
 package com.affnine.auth.Controller.Route;
 
 import com.affnine.auth.Model.RequestDto.RegisterSendOtpRequestDto;
+import com.affnine.auth.Model.RequestDto.RegisterVerifyOtpRequestDto;
 import com.affnine.auth.Util.ServiceResponse;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
@@ -12,4 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public interface AuthServiceRoute {
     @PostMapping(value = "/register/sendOtp")
     public ResponseEntity<ServiceResponse<String>> sendOtp(@Valid @RequestBody RegisterSendOtpRequestDto request);
+    @PostMapping(value = "/register/verifyOtp")
+    public ResponseEntity<ServiceResponse<String>> verifyOtp(@Valid @RequestBody RegisterVerifyOtpRequestDto request);
 }

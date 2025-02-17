@@ -7,6 +7,11 @@ public class AppConstant {
     public static final String DATA_UPDATED_MESSAGE_SUCCESS = "Data updated successfully.";
     public static final String UNAUTHORIZED_UPDATED_TASK_MESSAGE = "Unauthorized: You do not have permission to update this task.";
     public static final String UNAUTHORIZED_GET_TASK_DETAILS_MESSAGE = "Unauthorized: You do not have permission to get details of this task.";
+    public static final String ERROR_USER_ALREADY_REGISTERED = "User already registered.";
+    public static final String SUCCESS_OTP_SENT = "OTP sent successfully.";
+    public static final String ERROR_INVALID_OTP = "Invalid OTP.";
+    public static final String SUCCESS_REGISTRATION_COMPLETED = "Registration completed successfully.";
+    public static final String ERROR_SERVICE_DETAILS_NOT_FOUND = "Service Details Not Found!";
 
     // Master Role
     public static final String UNAUTHORIZED_CREATE_ROLE_MESSAGE = "Unauthorized: You do not have permission to create this role.";

@@ -18,10 +18,11 @@ import java.time.LocalDateTime;
 @Table(name = "services", uniqueConstraints = {
         @UniqueConstraint(columnNames = "name")
 },schema = "public")
-public class Service {
+public class Services {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    @SequenceGenerator(name = "services_seq_gen", sequenceName = "services_seq", allocationSize = 1)
+    private Long id;
 
     @Column(name = "name", nullable = false, unique = true, length = 50)
     private String name;

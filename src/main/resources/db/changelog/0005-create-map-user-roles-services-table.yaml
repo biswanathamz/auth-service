@@ -1,21 +1,22 @@
 databaseChangeLog:
   - changeSet:
-      id: 0004-create-user-roles-services-table
-      author: your_name
+      id: 0005-create-user-roles-services-table
+      author: Biswanath_Saha
       changes:
         - createTable:
             tableName: user_roles_services
             columns:
               - column:
-                    name: id
-                    type: INT
-                    autoIncrement: true
-                    constraints:
-                      primaryKey: true
-                      nullable: false
+                  name: id
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+                    unique: true
               - column:
                   name: user_id
-                  type: UUID
+                  type: BIGINT
                   constraints:
                     nullable: false
                     foreignKeyName: fk_user_roles_services_user
