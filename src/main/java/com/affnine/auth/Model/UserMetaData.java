@@ -7,25 +7,26 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
-import java.util.UUID;
 
 @Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 @Table(name = "user_meta_data",schema = "public")
 public class UserMetaData {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @SequenceGenerator(name = "user_meta_data_gen", sequenceName = "user_meta_data_seq", allocationSize = 1)
     private Long id;
 
     @OneToOne
-    @JoinColumn(name = "user_id", referencedColumnName = "id", nullable = false, unique = true)
+    @JoinColumn(name = "user_id", referencedColumnName = "id", nullable = false, unique = false)
     private User user;
 
     @ManyToOne
     @JoinColumn(name = "service_id", referencedColumnName = "id", nullable = false)
-    private Service service;
+    private Services service;
 
     @Column(name = "password", nullable = false, length = 255)
     private String password;

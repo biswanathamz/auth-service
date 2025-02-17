@@ -9,7 +9,6 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDateTime;
-import java.util.UUID;
 
 @Entity
 @Data
@@ -19,9 +18,10 @@ import java.util.UUID;
 @Table(name = "services", uniqueConstraints = {
         @UniqueConstraint(columnNames = "name")
 },schema = "public")
-public class Service {
+public class Services {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @SequenceGenerator(name = "services_seq_gen", sequenceName = "services_seq", allocationSize = 1)
     private Long id;
 
     @Column(name = "name", nullable = false, unique = true, length = 50)

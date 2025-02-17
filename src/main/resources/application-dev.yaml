@@ -25,3 +25,7 @@ redis:
     otp:
       key-prefix : "RegistrationOtp:"
       ttl : 5 # in minutes
+
+default:
+  config:
+    role-id: 1

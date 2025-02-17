@@ -19,6 +19,7 @@ import java.time.LocalDateTime;
 public class UserRoleService {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @SequenceGenerator(name = "user_roles_services_seq_gen", sequenceName = "user_roles_services_seq", allocationSize = 1)
     private Long id;
 
     @ManyToOne
@@ -31,7 +32,7 @@ public class UserRoleService {
 
     @ManyToOne
     @JoinColumn(name = "service_id", nullable = false, foreignKey = @ForeignKey(name = "fk_user_roles_services_service"))
-    private Service service;
+    private Services service;
 
     @CreationTimestamp
     @Column(name = "created_at", updatable = false, nullable = false)

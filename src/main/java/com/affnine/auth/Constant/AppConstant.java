@@ -11,6 +11,7 @@ public class AppConstant {
     public static final String SUCCESS_OTP_SENT = "OTP sent successfully.";
     public static final String ERROR_INVALID_OTP = "Invalid OTP.";
     public static final String SUCCESS_REGISTRATION_COMPLETED = "Registration completed successfully.";
+    public static final String ERROR_SERVICE_DETAILS_NOT_FOUND = "Service Details Not Found!";
 
     // Master Role
     public static final String UNAUTHORIZED_CREATE_ROLE_MESSAGE = "Unauthorized: You do not have permission to create this role.";

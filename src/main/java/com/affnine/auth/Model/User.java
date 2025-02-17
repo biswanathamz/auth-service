@@ -9,7 +9,6 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDateTime;
-import java.util.UUID;
 
 @Entity
 @Data
@@ -22,7 +21,8 @@ import java.util.UUID;
 },schema = "public")
 public class User {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @SequenceGenerator(name = "users_seq_gen", sequenceName = "users_seq", allocationSize = 1)
     private Long id;
 
     @Column(name = "first_name", nullable = false, length = 100)

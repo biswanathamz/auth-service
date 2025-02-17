@@ -11,6 +11,7 @@ import java.time.ZoneId;
 public class CommonUtils {
 
     private static final SecureRandom random = new SecureRandom();
+    private static final String CHARACTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 
     public static LocalDateTime epochTimeToString(String time){
         // Change to ZoneId.of("Asia/Kolkata") if needed
@@ -22,5 +23,13 @@ public class CommonUtils {
 
     public static Integer generateOTP() {
         return 100_000 + random.nextInt(900_000);
+    }
+
+    public static String generateDefaultPassword(int length) {
+        StringBuilder password = new StringBuilder(length);
+        for (int i = 0; i < length; i++) {
+            password.append(CHARACTERS.charAt(random.nextInt(CHARACTERS.length())));
+        }
+        return password.toString();
     }
 }
