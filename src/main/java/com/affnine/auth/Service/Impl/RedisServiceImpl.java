@@ -1,6 +1,9 @@
 package com.affnine.auth.Service.Impl;
 
+import com.affnine.auth.Model.Redis.RegistrationOtpDto;
 import com.affnine.auth.Service.RedisService;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
@@ -18,9 +21,11 @@ public class RedisServiceImpl implements RedisService {
     private Long registrationOtpTtl;
 
     private final RedisTemplate<String,String> redisTemplate;
+    private final ObjectMapper objectMapper;
 
-    public RedisServiceImpl(RedisTemplate<String,String> redisTemplate) {
+    public RedisServiceImpl(RedisTemplate<String,String> redisTemplate, ObjectMapper objectMapper) {
         this.redisTemplate = redisTemplate;
+        this.objectMapper = objectMapper;
     }
 
 
@@ -31,8 +36,14 @@ public class RedisServiceImpl implements RedisService {
     }
 
     @Override
-    public void setOtpForEmailRegistration(String email, int otp) throws IllegalArgumentException {
+    public void setOtpForEmailRegistration(String email, long serviceId, int otp) throws IllegalArgumentException, JsonProcessingException {
         String key = registrationOtpKeyPrefix + email;
-        set(key, String.valueOf(otp), registrationOtpTtl);
+        RegistrationOtpDto registrationOtpDto = RegistrationOtpDto.builder()
+                .email(email)
+                .applicationSourceId(serviceId)
+                .otp(otp)
+                .build();
+        String jsonValue = objectMapper.writeValueAsString(registrationOtpDto);
+        set(key, jsonValue, registrationOtpTtl);
     }
 }

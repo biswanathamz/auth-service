@@ -2,6 +2,7 @@ package com.affnine.auth.Service.Impl;
 
 import com.affnine.auth.Constant.AppConstant;
 import com.affnine.auth.Model.RequestDto.RegisterSendOtpRequestDto;
+import com.affnine.auth.Model.RequestDto.RegisterVerifyOtpRequestDto;
 import com.affnine.auth.Model.User;
 import com.affnine.auth.Model.UserRoleService;
 import com.affnine.auth.Repository.UserRepository;
@@ -40,11 +41,16 @@ public class AuthServiceImpl implements AuthService {
                     return ResponseUtils.badRequest(AppConstant.ERROR_USER_ALREADY_REGISTERED,null);
                 }
             }
-            otpService.sendRegisterOtp(request.getEmail());
+            otpService.sendRegisterOtp(request.getEmail(), request.getApplicationSourceId());
             return ResponseUtils.successResponse(AppConstant.SUCCESS_OTP_SENT,null);
         }catch (Exception e){
             return ResponseUtils.internalServerError(AppConstant.INTERNAL_SERVER_ERROR_MESSAGE,null);
         }
+    }
+
+    @Override
+    public ResponseEntity<ServiceResponse<String>> verifyOtpForRegistration(RegisterVerifyOtpRequestDto request) {
+        return null;
     }
 
     public User getUserByEmail(String email){
