@@ -17,5 +17,5 @@ public class RegisterVerifyOtpRequestDto {
     private Long applicationSourceId;
 
     @NotNull(message = "Otp can't be null")
-    private Long otp;
+    private Integer otp;
 }

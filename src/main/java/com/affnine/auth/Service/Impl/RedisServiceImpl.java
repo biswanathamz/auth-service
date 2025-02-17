@@ -36,6 +36,11 @@ public class RedisServiceImpl implements RedisService {
     }
 
     @Override
+    public void deleteKey(String key) {
+        redisTemplate.delete(key);
+    }
+
+    @Override
     public void setOtpForEmailRegistration(String email, long serviceId, int otp) throws IllegalArgumentException, JsonProcessingException {
         String key = registrationOtpKeyPrefix + email;
         RegistrationOtpDto registrationOtpDto = RegistrationOtpDto.builder()
@@ -45,5 +50,23 @@ public class RedisServiceImpl implements RedisService {
                 .build();
         String jsonValue = objectMapper.writeValueAsString(registrationOtpDto);
         set(key, jsonValue, registrationOtpTtl);
+    }
+
+    @Override
+    public RegistrationOtpDto getOtpDataForEmailRegistration(String email) throws JsonProcessingException {
+        String key = registrationOtpKeyPrefix + email;
+        String jsonValue = redisTemplate.opsForValue().get(key);
+        if (jsonValue!=null){
+            return objectMapper.readValue(jsonValue, RegistrationOtpDto.class);
+        }else{
+            return null;
+        }
+    }
+
+    @Override
+    public void deleteOtpForEmailRegistration(String email) {
+        String key = registrationOtpKeyPrefix + email;
+        System.out.println(key);
+        deleteKey(key);
     }
 }

@@ -24,4 +24,4 @@ redis:
   registration:
     otp:
       key-prefix : "RegistrationOtp:"
-      ttl : 15 # in minutes
+      ttl : 5 # in minutes

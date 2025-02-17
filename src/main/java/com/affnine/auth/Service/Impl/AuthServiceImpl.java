@@ -9,7 +9,6 @@ import com.affnine.auth.Repository.UserRepository;
 import com.affnine.auth.Repository.UserRoleServiceRepository;
 import com.affnine.auth.Service.AuthService;
 import com.affnine.auth.Service.OtpService;
-import com.affnine.auth.Util.CommonUtils;
 import com.affnine.auth.Util.ResponseUtils;
 import com.affnine.auth.Util.ServiceResponse;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +16,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
-import java.util.UUID;
 
 @Service
 public class AuthServiceImpl implements AuthService {
@@ -50,7 +48,15 @@ public class AuthServiceImpl implements AuthService {
 
     @Override
     public ResponseEntity<ServiceResponse<String>> verifyOtpForRegistration(RegisterVerifyOtpRequestDto request) {
-        return null;
+        try{
+            boolean verifyFlag = otpService.verifyRegisterOtp(request.getEmail(),request.getOtp());
+            if(!verifyFlag){
+                return ResponseUtils.badRequest(AppConstant.ERROR_INVALID_OTP,null);
+            }
+            return ResponseUtils.successResponse(AppConstant.SUCCESS_REGISTRATION_COMPLETED,null);
+        }catch (Exception e){
+            return ResponseUtils.internalServerError(AppConstant.INTERNAL_SERVER_ERROR_MESSAGE,null);
+        }
     }
 
     public User getUserByEmail(String email){
