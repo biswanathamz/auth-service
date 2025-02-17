@@ -23,7 +23,7 @@ import java.util.UUID;
 public class User {
     @Id
     @GeneratedValue
-    private UUID id;
+    private Long id;
 
     @Column(name = "first_name", nullable = false, length = 100)
     private String firstName;

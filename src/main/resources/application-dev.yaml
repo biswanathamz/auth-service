@@ -19,3 +19,9 @@ spring:
     port: ${AUTH_REDIS_PORT}
     database: ${AUTH_REDIS_DB}
     timeout: ${AUTH_REDIS_TIMEOUT}
+
+redis:
+  registration:
+    otp:
+      key-prefix : "RegistrationOtp:"
+      ttl : 15 # in minutes
